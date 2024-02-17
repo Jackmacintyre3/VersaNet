@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VersaNet - Settings</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/w87hUit.png">
+    <link id="theme" rel="stylesheet" href="dark-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .toggle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            margin-top: 20px; /* Adjusted margin */
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        .toggle-label {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="versadark.png" alt="VersaNet Logo">
+                VersaNet
+            </a>
+        </div>
+    </header>
+    <div class="banner">
+        <h1>Settings</h1>
+    </div>
+    <div class="container">
+        <div class="toggle-container">
+            <label class="toggle-switch">
+                <input type="checkbox" onclick="toggleTheme()">
+                <span class="slider round"></span>
+            </label>
+            <p class="toggle-label">Toggle Theme</p>
+        </div>
+    </div>
+    <footer>
+        © 2024 VersaNet. All rights reserved.
+    </footer>
+
+    <script>
+        // Function to toggle the theme and update the cookie
+        function toggleTheme() {
+            const themeLink = document.getElementById('theme');
+            const newTheme = themeLink.href.includes('dark-theme.css') ? 'light' : 'dark';
+            setCookie('theme', newTheme, 365);
+            setTheme();
+        }
+
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+            document.cookie = name + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
+        // Function to get a cookie value
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split('=');
+                if (cookieName.trim() === name) {
+                    return cookieValue;
+                }
+            }
+            return null;
+        }
+
+        // Function to set the theme based on the cookie value
+        function setTheme() {
+            const themeLink = document.getElementById('theme');
+            const theme = getCookie('theme');
+            themeLink.href = theme === 'light' ? 'light-theme.css' : 'dark-theme.css';
+        }
+
+        // Set the initial theme on page load
+        setTheme();
+    </script>
+</body>
+</html>

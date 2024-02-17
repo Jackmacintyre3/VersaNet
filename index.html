@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VersaNet - Dashboard</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/w87hUit.png">
+    <link id="theme" rel="stylesheet" href="dark-theme.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="versadark.png" alt="VersaNet Logo">
+                <span>VersaNet</span>
+            </a>
+        </div>
+        <div class="top-right-links">
+            <a href="#" class="top-link">Help</a>
+            <a href="settings.html" class="top-link">Settings</a>
+        </div>
+    </header>
+    <h1>Welcome to your VersaNet device</h1>
+    <hr></hr>
+    <div id="datetime" class="datetime"></div>
+    <br>
+    <div class="router-stats">
+        Basic Router Stats: Download Speed: 50 Mbps | Upload Speed: 10 Mbps | Connected Devices: 8
+    </div>
+    <div class="container">
+        <div class="box">
+            <a href="http://192.168.1.190/admin/index.php" target="_blank">
+                <img src="pihole.png" alt="Pi-Hole">
+            </a>
+            <a href="http://192.168.1.190/admin/index.php" target="_blank">Pi-Hole</a>
+            <div class="service-info">
+                <i class="fas fa-chart-pie"></i> Network-wide Ad Blocking
+            </div>
+        </div>
+        <div class="box">
+            <a href="http://192.168.1.189" target="_blank">
+                <img src="omv.png" alt="Open Media Vault">
+            </a>
+            <a href="http://192.168.1.189" target="_blank">Open Media Vault</a>
+            <div class="service-info">
+                <i class="fas fa-hdd"></i> Storage Management
+            </div>
+        </div>
+        <div class="box">
+            <a href="http://192.168.1.124:3001/dashboard" target="_blank">
+                <img src="kuma.png" alt="Uptime Kuma">
+            </a>
+            <a href="http://192.168.1.124:3001/dashboard" target="_blank">Uptime Kuma</a>
+            <div class="service-info">
+                <i class="fas fa-clock"></i> Monitor Uptime
+            </div>
+        </div>
+        <div class="box">
+            <a href="http://192.168.1.254/2.0/gui/#/login/" target="_blank">
+                <img src="eir.png" alt="Eir">
+            </a>
+            <a href="http.//192.168.1.254/2.0/gui/#/login/" target="_blank">Eir</a>
+            <div class="service-info">
+                <i class="fas fa-signal"></i> ISP Management
+            </div>
+        </div>
+        <div class="box">
+            <a href="http://192.168.1.189:32400/web/index.html#!/" target="_blank">
+                <img src="plex2.png" alt="Plex">
+            </a>
+            <a href="http://192.168.1.189:32400/web/index.html#!/" target="_blank">Plex</a>
+            <div class="service-info">
+                <i class="fas fa-signal"></i> Plex Media Server
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div>
+            &copy; 2024 VersaNet. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        function updateDateTime() {
+            const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+            const datetimeElement = document.getElementById('datetime');
+            const currentDatetime = new Date().toLocaleDateString('en-GB', options);
+            datetimeElement.textContent = currentDatetime;
+        }
+
+        setInterval(updateDateTime, 1000);
+    </script>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Function to set the theme based on the cookie
+    function setThemeFromCookie() {
+        const theme = getCookie('theme');
+        if (theme) {
+            document.getElementById('theme').href = theme + '-theme.css';
+        }
+    }
+
+    // Function to get the value of a cookie
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // Set the theme on page load
+    setThemeFromCookie();
+
+    // Event listener for theme toggle
+    themeToggle.addEventListener('click', function () {
+        const currentTheme = document.getElementById('theme').href;
+        const newTheme = currentTheme.includes('dark') ? 'light' : 'dark';
+
+        document.getElementById('theme').href = `${newTheme}-theme.css`;
+
+        // Set the theme cookie
+        document.cookie = `theme=${newTheme}; path=/`;
+    });
+</script>
+</body>
+</html>

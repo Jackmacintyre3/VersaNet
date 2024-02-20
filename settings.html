@@ -8,17 +8,12 @@
     <link rel="shortcut icon" href="https://i.imgur.com/w87hUit.png">
     <link id="theme" rel="stylesheet" href="dark-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Your existing styles... */
-    </style>
 </head>
 <body>
     <header>
         <div class="logo">
             <a href="index.html" class="top-link">VersaNet</a>
-            </a>
         </div>
-        <div id="datetime" class="datetime"></div>
         <div class="top-right-links">
             <a href="#" class="top-link">Help</a>
             <a href="settings.html" class="top-link">Settings</a>
@@ -39,7 +34,10 @@
     <footer>
         © 2024 VersaNet. All rights reserved.
     </footer>
-    <!-- Include the theme-toggle.js script -->
     <script src="theme.js"></script>
+    <script src="datetime.js"></script>
+    <script>
+        displayDateTime();
+    </script>
 </body>
 </html>

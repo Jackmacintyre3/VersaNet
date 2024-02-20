@@ -82,7 +82,7 @@ hr {
 }
 
 .router-stats {
-    color: #2c3e50; /* Updated color to match the rest of the text */
+    color: #2c3e50;
     margin-bottom: 20px;
 }
 
@@ -139,6 +139,10 @@ footer {
     width: 100%;
     position: fixed;
     bottom: 0;
+}
+
+.datetime {
+    color: #2c3e50; /* Matching header text color */
 }
 
 /* Toggle Switch Styles */

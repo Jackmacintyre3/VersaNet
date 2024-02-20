@@ -1,7 +1,8 @@
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, #ffeaa7, #fdcb6e);
-    color: #2d3436;
+    background: linear-gradient(to bottom, #3498db, #87CEEB, #bdc3c7);
+    color: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,7 +15,7 @@ body {
 }
 
 header {
-    background-color: #6ab04c;
+    background-color: #3498db;
     padding: 15px;
     text-align: center;
     width: 100%;
@@ -36,7 +37,7 @@ header {
 }
 
 .logo a {
-    color: #2d3436;
+    color: #2c3e50;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -54,11 +55,12 @@ header {
 }
 
 .top-right-links a {
-    color: #2d3436;
+    color: #2c3e50;
     text-decoration: none;
     font-weight: bold;
     margin-left: 20px;
     padding: 5px 10px;
+    transition: color 0.3s ease-in-out;
 }
 
 .top-right-links a:hover {
@@ -67,7 +69,7 @@ header {
 
 h1 {
     margin: 0;
-    color: #2d3436;
+    color: #2c3e50;
     font-size: 24px;
     margin-top: 10px;
     padding: 0 20px;
@@ -76,11 +78,11 @@ h1 {
 hr {
     width: 50%;
     margin: 20px 0;
-    border-color: #6ab04c;
+    border-color: #3498db;
 }
 
 .router-stats {
-    color: #6ab04c;
+    color: #2c3e50; /* Updated color to match the rest of the text */
     margin-bottom: 20px;
 }
 
@@ -94,9 +96,9 @@ hr {
 }
 
 .box {
-    background-color: #f0932b;
-    color: #2d3436;
-    padding: 10px;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 15px;
     border-radius: 10px;
     text-align: center;
     margin: 10px;
@@ -122,7 +124,7 @@ hr {
 }
 
 .box a {
-    color: #2d3436;
+    color: #2c3e50;
     text-decoration: none;
     font-weight: bold;
     display: block;
@@ -130,8 +132,8 @@ hr {
 }
 
 footer {
-    background-color: #6ab04c;
-    color: #2d3436;
+    background-color: #3498db;
+    color: #2c3e50;
     text-align: center;
     padding: 10px;
     width: 100%;
@@ -188,11 +190,11 @@ footer {
 }
 
 input:checked + .slider {
-    background-color: #6ab04c;
+    background-color: #5dade2;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #6ab04c;
+    box-shadow: 0 0 1px #5dade2;
 }
 
 input:checked + .slider:before {

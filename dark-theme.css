@@ -1,7 +1,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, #000000, #262626);
+    background: linear-gradient(to bottom, #2c3e50, #1c1c1c);
     color: #ecf0f1;
     margin: 0;
     padding: 0;
@@ -15,7 +15,7 @@ body {
 }
 
 header {
-    background-color: #262626;
+    background: linear-gradient(to bottom, #2c3e50, #1c1c1c);
     padding: 15px;
     text-align: center;
     width: 100%;
@@ -37,11 +37,16 @@ header {
 }
 
 .logo a {
-    color: #3498db;
+    color: #ecf0f1;
     text-decoration: none;
     display: flex;
     align-items: center;
     padding: 0 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.logo a:hover {
+    color: #3498db; /* Contrasting color on hover */
 }
 
 .logo img {
@@ -55,20 +60,21 @@ header {
 }
 
 .top-right-links a {
-    color: #3498db;
+    color: #ecf0f1;
     text-decoration: none;
     font-weight: bold;
     margin-left: 20px;
     padding: 5px 10px;
+    transition: color 0.3s ease-in-out;
 }
 
 .top-right-links a:hover {
-    color: #ffffff;
+    color: #3498db; /* Contrasting color on hover */
 }
 
 h1 {
     margin: 0;
-    color: #ffffff;
+    color: #ecf0f1;
     font-size: 24px;
     margin-top: 10px;
     padding: 0 20px;
@@ -77,11 +83,11 @@ h1 {
 hr {
     width: 50%;
     margin: 20px 0;
-    border-color: #3498db;
+    border-color: #ecf0f1;
 }
 
 .router-stats {
-    color: #3498db;
+    color: #ecf0f1;
     margin-bottom: 20px;
 }
 
@@ -123,16 +129,21 @@ hr {
 }
 
 .box a {
-    color: #ffffff;
+    color: #ecf0f1;
     text-decoration: none;
     font-weight: bold;
     display: block;
     margin-top: auto;
+    transition: color 0.3s ease-in-out;
+}
+
+.box a:hover {
+    color: #3498db; /* Contrasting color on hover */
 }
 
 footer {
-    background-color: #262626;
-    color: #ffffff;
+    background: linear-gradient(to bottom, #2c3e50, #1c1c1c);
+    color: #ecf0f1;
     text-align: center;
     padding: 10px;
     width: 100%;
@@ -169,7 +180,7 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #4a69bd; /* Updated toggle button color */
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 34px;
@@ -189,11 +200,11 @@ footer {
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #e74c3c;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #e74c3c;
 }
 
 input:checked + .slider:before {

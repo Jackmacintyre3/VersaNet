@@ -22,10 +22,11 @@
     </header>
     <h1>Welcome to your VersaNet device</h1>
     <hr>
-    <div id="datetime" class="datetime"></div> <!-- Added datetime here -->
+    <div id="datetime" class="datetime"></div>
     <br>
-    <div class="router-stats">
-        Basic Router Stats: Download Speed: 50 Mbps | Upload Speed: 10 Mbps | Connected Devices: 8
+    <button id="runMonitorButton" onclick="runMonitor()">Run Speed Test</button>
+    <div id="loading" class="loader"></div>
+    <div class="router-stats" id="network-stats">
     </div>
     <div class="container">
         <div class="box">
@@ -79,10 +80,9 @@
             &copy; 2024 VersaNet. All rights reserved.
         </div>
     </footer>
-    <!-- Include the theme.js script -->
     <script src="theme.js"></script>
-    <!-- Include the datetime.js script -->
     <script src="datetime.js"></script>
+    <script src="run.js"></script>
 </body>
 
 </html>

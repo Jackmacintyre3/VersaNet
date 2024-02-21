@@ -1,69 +1,87 @@
 
-function runMonitor() {
-    // Show loading icon
+async function runMonitor() {
     document.getElementById('loading').style.display = 'block';
 
-    // Create an XMLHttpRequest object
-    var xhr = new XMLHttpRequest();
+    try {
+        var fileXhr = new XMLHttpRequest();
+        var fileUrl = 'speedtest_results.txt';
 
-    // Define the script URL on the server that will execute the monitor_network.sh script
-    var scriptUrl = 'run_monitor.sh'; // Adjust the path if needed
+        fileXhr.open('GET', fileUrl, true);
 
-    // Set up the request
-    xhr.open('GET', scriptUrl, true);
+        fileXhr.onload = function () {
+            if (fileXhr.status === 200) {
+                var content = fileXhr.responseText;
+                var lines = content.split('\n');
 
-    // Define the function to handle the response
-    xhr.onload = function () {
-        // Hide loading icon
+                var downloadSpeed, uploadSpeed;
+
+                lines.forEach(function (line) {
+                    if (line.startsWith('Download:')) {
+                        downloadSpeed = line.replace('Download:', '').trim();
+                    } else if (line.startsWith('Upload:')) {
+                        uploadSpeed = line.replace('Upload:', '').trim();
+                    }
+                });
+
+                setTimeout(function () {
+                    // Display the formatted content in the 'network-stats' div
+                    var outputString = '<pre>Basic Router Stats: Download Speed: ' + downloadSpeed + ' Mbps | Upload Speed: ' + uploadSpeed + ' Mbps</pre>';
+                    document.getElementById('network-stats').innerHTML = outputString;
+
+                    document.getElementById('loading').style.display = 'none';
+                }, 10000); // 10-second delay
+            } else {
+                console.error('Error:', fileXhr.statusText);
+                document.getElementById('loading').style.display = 'none';
+            }
+        };
+
+        fileXhr.send();
+    } catch (error) {
+        console.error('Error:', error);
         document.getElementById('loading').style.display = 'none';
-
-        if (xhr.status === 200) {
-            // After the script is executed, wait for a brief moment and then read and display the content of the text file
-            setTimeout(function () {
-                readTextFile('speedtest_results.txt');
-            }, 25000); // Adjust the delay (in milliseconds) as needed
-        } else {
-            // Handle errors if needed
-            console.error('Error:', xhr.statusText);
-        }
-    };
-
-    // Send the request
-    xhr.send();
+    }
 }
+async function runMonitor() {
+    document.getElementById('loading').style.display = 'block';
 
-function readTextFile(file) {
-    // Create a new XMLHttpRequest object
-    var fileXhr = new XMLHttpRequest();
+    try {
+        var fileXhr = new XMLHttpRequest();
+        var fileUrl = 'speedtest_results.txt';
 
-    // Set up the request to read the content of the text file
-    fileXhr.open('GET', file, true);
+        fileXhr.open('GET', fileUrl, true);
 
-    // Define the function to handle the response
-    fileXhr.onload = function () {
-        if (fileXhr.status === 200) {
-            // Parse and format the content
-            var content = fileXhr.responseText;
-            var lines = content.split('\n');
+        fileXhr.onload = function () {
+            if (fileXhr.status === 200) {
+                var content = fileXhr.responseText;
+                var lines = content.split('\n');
 
-            var downloadSpeed, uploadSpeed;
+                var downloadSpeed, uploadSpeed;
 
-            lines.forEach(function (line) {
-                if (line.startsWith('Download:')) {
-                    downloadSpeed = line.replace('Download:', '').trim();
-                } else if (line.startsWith('Upload:')) {
-                    uploadSpeed = line.replace('Upload:', '').trim();
-                }
-            });
+                lines.forEach(function (line) {
+                    if (line.startsWith('Download:')) {
+                        downloadSpeed = line.replace('Download:', '').trim();
+                    } else if (line.startsWith('Upload:')) {
+                        uploadSpeed = line.replace('Upload:', '').trim();
+                    }
+                });
 
-            // Display the formatted content in the 'output' div
-            document.getElementById('output').innerHTML = '<pre>Download Speed: ' + downloadSpeed + ' Mbps\nUpload Speed: ' + uploadSpeed + ' Mbps</pre>';
-        } else {
-            // Handle errors if needed
-            console.error('Error:', fileXhr.statusText);
-        }
-    };
+                setTimeout(function () {
+                    // Display the formatted content in the 'network-stats' div
+                    var outputString = '<pre>Basic Router Stats: Download Speed: ' + downloadSpeed + ' Mbps | Upload Speed: ' + uploadSpeed + ' Mbps</pre>';
+                    document.getElementById('network-stats').innerHTML = outputString;
 
-    // Send the request to read the text file
-    fileXhr.send();
+                    document.getElementById('loading').style.display = 'none';
+                }, 10000); // 10-second delay
+            } else {
+                console.error('Error:', fileXhr.statusText);
+                document.getElementById('loading').style.display = 'none';
+            }
+        };
+
+        fileXhr.send();
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('loading').style.display = 'none';
+    }
 }

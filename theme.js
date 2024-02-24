@@ -1,4 +1,5 @@
 
+
 // Function to toggle the theme and update the cookie
 function toggleTheme() {
     const themeLink = document.getElementById('theme');

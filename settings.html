@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,27 @@
     <link rel="shortcut icon" href="https://i.imgur.com/w87hUit.png">
     <link id="theme" rel="stylesheet" href="dark-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2em;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+
+        .toggle-label {
+            margin-left: 1em;
+        }
+
+    </style>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -25,10 +46,17 @@
     <div class="container">
         <div class="toggle-container">
             <label class="toggle-switch">
-                <input type="checkbox" onclick="toggleTheme()">
+                <input type="checkbox" onclick="toggleTheme()" checked>
                 <span class="slider round"></span>
             </label>
             <p class="toggle-label">Toggle Theme</p>
+        </div>
+        <div class="toggle-container">
+            <label class="toggle-switch">
+                <input type="checkbox" onclick="toggleAudioDescription()" id="audioDescriptionToggle">
+                <span class="slider round"></span>
+            </label>
+            <p class="toggle-label">Audio Description</p>
         </div>
     </div>
     <footer>
@@ -38,6 +66,36 @@
     <script src="datetime.js"></script>
     <script>
         displayDateTime();
+        // Load Audio Description toggle state from cookie on page load
+        window.onload = function() {
+            var audioDescriptionToggle = document.getElementById("audioDescriptionToggle");
+            var audioDescriptionCookie = getCookie("audioDescription");
+            if (audioDescriptionCookie !== "") {
+                audioDescriptionToggle.checked = audioDescriptionCookie === "true";
+            }
+        };
+
+        // Function to get the value of a cookie by name
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+            return "";
+        }
+    </script>
+    <script src="textToSpeech.js"></script>
+    <script>
+        // Function to toggle Audio Description and set the cookie
+        function toggleAudioDescription() {
+            var audioDescriptionToggle = document.getElementById("audioDescriptionToggle");
+            setAudioDescriptionToggle(audioDescriptionToggle.checked ? "true" : "false");
+        }
+
+        // Function to set the audioDescription cookie
+        function setAudioDescriptionToggle(value) {
+            document.cookie = "audioDescription=" + value + "; path=/";
+        }
     </script>
 </body>
+
 </html>

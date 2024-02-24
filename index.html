@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,23 +12,28 @@
 <body>
     <header>
         <div class="logo">
-            <a href="index.html" class="top-link">VersaNet</a>
+            <a href="index.html">VersaNet</a>
+        </div>
+        <div id="internet-status" class="status-indicator">
+            <div id="internet-status-text">Internet Connection:</div>
+            <div class="status-circle"></div>
         </div>
         <div class="top-right-links">
-            <a href="#" class="top-link">Help</a>
-            <a href="settings.html" class="top-link">Settings</a>
+            <a href="#" id="helpLink">Help</a>
+            <a href="settings.html" id="settingsLink">Settings</a>
         </div>
     </header>
+
     <h1>Welcome to your VersaNet device</h1>
     <hr>
     <div id="datetime" class="datetime"></div>
     <br>
-    <button id="runMonitorButton" onclick="runMonitor()">Run Speed Test</button>
+    <button id="runMonitorButton" onclick="runMonitor()" onmouseover="readText('Run Speed Test')">Run Speed Test</button>
     <div id="loading" class="loader"></div>
-    <div class="router-stats" id="network-stats">
-    </div>
+    <div class="router-stats" id="network-stats"></div>
+
     <div class="container">
-        <div class="box">
+        <div class="box" onmouseover="readText('Pi-Hole')">
             <a href="http://192.168.1.190/admin/index.php" target="_blank">
                 <img src="pihole.png" alt="Pi-Hole">
             </a>
@@ -38,7 +42,7 @@
                 <i class="fas fa-chart-pie"></i> Network-wide Ad Blocking
             </div>
         </div>
-        <div class="box">
+        <div class="box" onmouseover="readText('Open Media Vault')">
             <a href="http://192.168.1.189" target="_blank">
                 <img src="omv.png" alt="Open Media Vault">
             </a>
@@ -47,7 +51,7 @@
                 <i class="fas fa-hdd"></i> Storage Management
             </div>
         </div>
-        <div class="box">
+        <div class="box" onmouseover="readText('Uptime Kuma')">
             <a href="http://192.168.1.124:3001/dashboard" target="_blank">
                 <img src="kuma.png" alt="Uptime Kuma">
             </a>
@@ -56,16 +60,16 @@
                 <i class="fas fa-clock"></i> Monitor Uptime
             </div>
         </div>
-        <div class="box">
+        <div class="box" onmouseover="readText('Eir')">
             <a href="http://192.168.1.254/2.0/gui/#/login/" target="_blank">
                 <img src="eir3.png" alt="Eir">
             </a>
-            <a href="http.//192.168.1.254/2.0/gui/#/login/" target="_blank">Eir</a>
+            <a href="http://192.168.1.254/2.0/gui/#/login/" target="_blank">Eir</a>
             <div class="service-info">
                 <i class="fas fa-signal"></i> ISP Management
             </div>
         </div>
-        <div class="box">
+        <div class="box" onmouseover="readText('Plex')">
             <a href="http://192.168.1.189:32400/web/index.html#!/" target="_blank">
                 <img src="plex6.png" alt="Plex">
             </a>
@@ -75,14 +79,15 @@
             </div>
         </div>
     </div>
+
     <footer>
-        <div>
-            &copy; 2024 VersaNet. All rights reserved.
-        </div>
+        &copy; 2024 VersaNet. All rights reserved.
     </footer>
     <script src="theme.js"></script>
     <script src="datetime.js"></script>
     <script src="run.js"></script>
+    <script src="check.js"></script>
+    <script src="textToSpeech.js"></script>
 </body>
 
 </html>

@@ -24,15 +24,18 @@ async function checkInternet() {
 
 function initializeStatusIndicator() {
     const statusIndicator = document.getElementById('internet-status');
-    statusIndicator.innerHTML = 'Internet: <div class="status-circle"></div>';
+    statusIndicator.innerHTML = 'Internet Connection: <div class="status-circle"></div>';
 }
 
 function updateStatusIndicator(isUp) {
     const statusIndicator = document.querySelector('.status-circle');
+    const statusText = document.getElementById('internet-status');
 
     if (isUp) {
         statusIndicator.style.backgroundColor = '#2ecc71'; // Green color
+        statusText.innerHTML = 'Internet Connection: <div class="status-circle" style="background-color: #2ecc71;"></div> Online';
     } else {
         statusIndicator.style.backgroundColor = '#e74c3c'; // Red color
+        statusText.innerHTML = 'Internet Connection: <div class="status-circle" style="background-color: #e74c3c;"></div> Offline';
     }
 }

@@ -34,7 +34,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
- margin-left: 10px;
+    margin-left: 10px;
 }
 
 .logo a {
@@ -265,16 +265,12 @@ input:checked + .slider:before {
 #internet-status {
     display: flex;
     align-items: center;
-    margin-left: 45px;
-
+    margin-left: 150px;
 }
 
 #internet-status-text {
-    margin-right: 10px;
     color: #ecf0f1;
     font-size: 16px;
- margin-left: 25px;
-
 }
 
 .status-circle {
@@ -284,3 +280,94 @@ input:checked + .slider:before {
     margin-left: 10px;
     margin-right: 10px;
 }
+
+/* Table Styles */
+table {
+    border-collapse: collapse;
+    width: calc(100% - 20px); /* Set the width to 100% minus 20px for a 10px gap on each side */
+    margin: 0 10px; /* Add 10px margin on each side */
+    color: #ecf0f1;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    border: 1px solid #34495e;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #2c3e50;
+}
+
+/* Chart Container Styles */
+.chart-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 120px; /* Vertical spacing between charts */
+    width: 95%; /* Set the width to 95% */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+}
+
+/* Chart Styles */
+canvas {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Chart Axis Label Colors */
+.axis-label,
+text {
+    fill: #ecf0f1; /* Change the chart's axis label color to white */
+}
+
+alendar input {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+#loadPreviousDayButton,
+#loadNextDayButton,
+#loadDataButton {
+    background-color: #1b4f72;
+    color: #ecf0f1;
+    padding: 8px 20px; /* Adjusted padding for more space on either side */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Adjusted font size for buttons */
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#loadPreviousDayButton:hover,
+#loadNextDayButton:hover,
+#loadDataButton:hover {
+    background-color: #154360;
+}
+
+/* Calendar Styles */
+#datePicker {
+    background-color: #1b4f72; /* Matching button color */
+    color: #ecf0f1;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px; /* Adjusted font size for the date picker */
+}
+
+#calendar input {
+    background-color: #1b4f72; /* Matching button color */
+    color: #ecf0f1;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+pi

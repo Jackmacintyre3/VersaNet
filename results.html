@@ -8,16 +8,15 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <title>Speed Test Results</title>
     <link rel="shortcut icon" href="https://i.imgur.com/w87hUit.png">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link id="theme" rel="stylesheet" href="dark-theme.css">
-    <style>
-    </style>
+
 
     <script src="theme.js"></script>
     <script src="datetime.js"></script>
     <script src="run.js"></script>
     <script src="check.js"></script>
     <script src="textToSpeech.js"></script>
-    <script src="graphs.js"></script>
 </head>
 
 <body>
@@ -37,6 +36,13 @@
     </header>
 
     <h2>Speed Test Results</h2>
+
+    <div>
+        <label for="datePicker">Select Date:</label>
+        <input type="date" id="datePicker" />
+        <button id="loadPreviousDayButton">Load Previous Day</button>
+        <button id="loadNextDayButton">Load Next Day</button>
+    </div>
 
     <table id="speedTestTable">
         <thead>
@@ -63,7 +69,15 @@
     <footer>
         &copy; 2024 VersaNet. All rights reserved.
     </footer>
-
+<script>
+    $(document).ready(function () {
+        $('#datePicker').change(function () {
+            selectedDate = $('#datePicker').val();
+            loadData();
+        });
+    });
+</script>
+    <script src="graphs.js"></script>
 </body>
 
 </html>

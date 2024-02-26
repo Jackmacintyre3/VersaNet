@@ -1,0 +1,9 @@
+[Unit]
+Description=Run arp-scan and sort the output
+
+[Service]
+Type=simple
+ExecStart=/var/www/html/run_arp_scan.sh
+
+[Install]
+WantedBy=default.target

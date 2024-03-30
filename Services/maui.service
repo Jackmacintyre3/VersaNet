@@ -1,0 +1,9 @@
+[Unit]
+Description=Network Monitor Service
+
+[Service]
+ExecStart=/var/www/html/maui_results.sh
+Restart=always
+
+[Install]
+WantedBy=default.target

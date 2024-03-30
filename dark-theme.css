@@ -370,4 +370,18 @@ alendar input {
     border-radius: 3px;
     margin-right: 10px;
 }
-pi
+.graph-button {
+    background-color: #1b4f72;
+    color: #ecf0f1;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.graph-button:hover {
+    background-color: #154360;
+}

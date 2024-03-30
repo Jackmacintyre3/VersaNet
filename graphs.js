@@ -45,11 +45,9 @@ function loadData() {
                 noDataCell.colSpan = 4;
                 noDataCell.textContent = 'No Data for selected day';
 
-                // Update the heading even when there's no data
                 const heading = document.querySelector('h2');
                 heading.textContent = `Speed Test Results - ${formatDate(selectedDate)}`;
 
-                // Clear the graphs
                 clearGraphs();
 
                 return;
@@ -69,17 +67,15 @@ function loadData() {
             const pingSpeeds = sortedResults.map(result => result.ping_speed);
 
             createLineChart('Download Speed Over Time', 'downloadChart', averageTimestamps, downloadSpeeds);
-            createLineChart('Upload Speed Over Time', 'uploadChart', averageTimestamps, uploadSpeeds, [9, 10]);
+            createLineChart('Upload Speed Over Time', 'uploadChart', averageTimestamps, uploadSpeeds, [8, 10]);
             createLineChart('Ping Speed Over Time', 'pingChart', averageTimestamps, pingSpeeds);
 
-            // Update the heading with the selected date
             const heading = document.querySelector('h2');
             heading.textContent = `Speed Test Results - ${formatDate(selectedDate)}`;
         })
         .catch(error => console.error('Error fetching data:', error));
 }
 
-// Function to format the date as "25th of February 2024"
 function formatDate(dateString) {
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
     const date = new Date(dateString);
@@ -91,7 +87,6 @@ function formatDate(dateString) {
     return formattedDate.replace(/\d+/, day + daySuffix);
 }
 
-// Function to get the day suffix (st, nd, rd, or th)
 function getDaySuffix(day) {
     if (day >= 11 && day <= 13) {
         return 'th';
@@ -109,7 +104,6 @@ function getDaySuffix(day) {
     }
 }
 
-// Load data for the current day by default
 loadData();
 
 function loadPreviousDayData() {
@@ -134,8 +128,6 @@ loadNextDayButton.addEventListener('click', loadNextDayData);
 
 const loadDataButton = document.getElementById('loadDataButton');
 loadDataButton.addEventListener('click', loadData);
-
-// Rest of your code...
 
 function createLineChart(title, svgId, xData, yData, yDomain) {
     const margin = { top: 20, right: 20, bottom: 50, left: 50 };
@@ -222,4 +214,17 @@ function clearGraphs() {
     });
 
     console.log('Graphs cleared successfully.');
+}
+
+function openGraphInNewPage(chartId) {
+    const svgElement = document.getElementById(chartId);
+    if (!svgElement) {
+        console.error(`SVG element with ID ${chartId} not found.`);
+        return;
+    }
+    const svgString = new XMLSerializer().serializeToString(svgElement);
+    const blob = new Blob([svgString], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const graphUrl = `graph.html?svg=${encodeURIComponent(url)}`;
+    window.open(graphUrl, '_blank');
 }

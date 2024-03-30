@@ -7,6 +7,39 @@
     <title>VersaNet - Dashboard</title>
     <link rel="shortcut icon" href="https://i.imgur.com/w87hUit.png">
     <link id="theme" rel="stylesheet" href="dark-theme.css">
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            position: relative;
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .tool-description {
+            display: none;
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+            text-align: left;
+        }
+
+        .box:hover .tool-description {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +52,8 @@
             <div class="status-circle"></div>
         </div>
         <div class="top-right-links">
-            <a href="#" id="helpLink">Help</a>
+            <a href="results.html" id="resultsLink">Results</a>
+            <a href="help.html" id="helpLink">Help</a>
             <a href="settings.html" id="settingsLink">Settings</a>
         </div>
     </header>
@@ -33,7 +67,7 @@
     <div class="router-stats" id="network-stats"></div>
 
     <div class="container">
-        <div class="box" onmouseover="readText('Pi-Hole')">
+        <div class="box" title="Network-wide Ad Blocking">
             <a href="http://192.168.1.190/admin/index.php" target="_blank">
                 <img src="pihole.png" alt="Pi-Hole">
             </a>
@@ -41,8 +75,12 @@
             <div class="service-info">
                 <i class="fas fa-chart-pie"></i> Network-wide Ad Blocking
             </div>
+            <div class="tool-description">
+                Pi-Hole is a powerful network-wide ad blocker that enhances your internet experience by blocking unwanted ads,
+                providing a cleaner and faster browsing environment for all connected devices.
+            </div>
         </div>
-        <div class="box" onmouseover="readText('Open Media Vault')">
+        <div class="box" title="Storage Management">
             <a href="http://192.168.1.189" target="_blank">
                 <img src="omv.png" alt="Open Media Vault">
             </a>
@@ -50,8 +88,12 @@
             <div class="service-info">
                 <i class="fas fa-hdd"></i> Storage Management
             </div>
+            <div class="tool-description">
+                Open Media Vault is a comprehensive storage management solution, allowing you to organize and manage your
+                network-attached storage (NAS) devices, ensuring efficient data storage and retrieval.
+            </div>
         </div>
-        <div class="box" onmouseover="readText('Uptime Kuma')">
+        <div class="box" title="Monitor Uptime">
             <a href="http://192.168.1.124:3001/dashboard" target="_blank">
                 <img src="kuma.png" alt="Uptime Kuma">
             </a>
@@ -59,8 +101,12 @@
             <div class="service-info">
                 <i class="fas fa-clock"></i> Monitor Uptime
             </div>
+            <div class="tool-description">
+                Uptime Kuma allows you to monitor the uptime of your devices and services, providing valuable insights into
+                their reliability and performance over time, helping you ensure a stable network environment.
+            </div>
         </div>
-        <div class="box" onmouseover="readText('Eir')">
+        <div class="box" title="ISP Management">
             <a href="http://192.168.1.254/2.0/gui/#/login/" target="_blank">
                 <img src="eir3.png" alt="Eir">
             </a>
@@ -68,14 +114,22 @@
             <div class="service-info">
                 <i class="fas fa-signal"></i> ISP Management
             </div>
+            <div class="tool-description">
+                Eir provides tools for managing your Internet Service Provider (ISP) settings, allowing you to configure and
+                optimize your internet connection for improved performance and reliability.
+            </div>
         </div>
-        <div class="box" onmouseover="readText('Plex')">
+        <div class="box" title="Plex Media Server">
             <a href="http://192.168.1.189:32400/web/index.html#!/" target="_blank">
                 <img src="plex6.png" alt="Plex">
             </a>
             <a href="http://192.168.1.189:32400/web/index.html#!/" target="_blank">Plex</a>
             <div class="service-info">
                 <i class="fas fa-signal"></i> Plex Media Server
+            </div>
+            <div class="tool-description">
+                Plex is a versatile media server that allows you to organize, stream, and access your multimedia content
+                seamlessly. Enjoy your favorite movies, TV shows, and music on any device within your network.
             </div>
         </div>
     </div>

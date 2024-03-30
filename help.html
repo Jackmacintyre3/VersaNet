@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VersaNet - Help</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/w87hUit.png">
+    <link id="theme" rel="stylesheet" href="dark-theme.css">
+    <style>
+        .help-box-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            align-items: flex-start;
+            margin-top: 80px; /* Increased top margin for better positioning */
+            padding: 0 20px; /* Added padding to the sides */
+            padding-bottom: 80px; /* Added padding to avoid clipping through the footer */
+        }
+
+        .help-box {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px; /* Adjusted padding to make the boxes slightly shorter */
+            border-radius: 10px;
+            text-align: left; /* Left align the content */
+            width: calc(100% - 20px); /* Occupy full width of the grid cell with spacing */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .help-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .help-box .question {
+            font-weight: bold;
+            font-size: 18px; /* Adjusted font size */
+            margin-bottom: 8px; /* Adjusted margin */
+        }
+
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            margin-top: 8px; /* Adjusted margin */
+            font-size: 16px; /* Adjusted font size */
+        }
+
+        .help-box.active .answer {
+            max-height: 200px; /* Adjusted max height */
+        }
+
+    </style>
+    <header>
+        <div class="logo">
+            <a href="index.html">VersaNet</a>
+        </div>
+        <div class="top-right-links">
+            <a href="results.html">Results</a>
+            <a href="help.html">Help</a>
+            <a href="settings.html">Settings</a>
+        </div>
+    </header>
+</head>
+
+<body>
+    <div class="help-box-container">
+        <div class="help-box" id="help-box-2" onclick="toggleAnswer(2)">
+            <div class="question">What is Pi-Hole and how does it work?</div>
+            <div class="answer" id="answer2">Pi-Hole is a network-wide ad blocker. It works by intercepting DNS requests and blocking known advertising domains.</div>
+        </div>
+
+        <div class="help-box" id="help-box-3" onclick="toggleAnswer(3)">
+            <div class="question">Managing storage with Open Media Vault.</div>
+            <div class="answer" id="answer3">Open Media Vault allows you to organize and manage your network-attached storage (NAS) devices for efficient data storage and retrieval.</div>
+        </div>
+
+        <div class="help-box" id="help-box-4" onclick="toggleAnswer(4)">
+            <div class="question">Monitoring device uptime with Uptime Kuma.</div>
+            <div class="answer" id="answer4">Uptime Kuma helps you monitor the uptime of your devices and services, providing valuable insights into their reliability and performance over time.</div>
+        </div>
+
+        <div class="help-box" id="help-box-6" onclick="toggleAnswer(6)">
+            <div class="question">Using Plex Media Server for media streaming.</div>
+            <div class="answer" id="answer6">Plex is a versatile media server that allows you to organize, stream, and access your multimedia content seamlessly. Enjoy your favorite movies, TV shows, and music on any device within your network.</div>
+        </div>
+
+        <!-- Add more boxes here -->
+        <div class="help-box" id="help-box-7" onclick="toggleAnswer(7)">
+            <div class="question">Question 7</div>
+            <div class="answer" id="answer7">Answer 7</div>
+        </div>
+
+        <div class="help-box" id="help-box-8" onclick="toggleAnswer(8)">
+            <div class="question">Question 8</div>
+            <div class="answer" id="answer8">Answer 8</div>
+        </div>
+
+        <div class="help-box" id="help-box-9" onclick="toggleAnswer(9)">
+            <div class="question">Question 9</div>
+            <div class="answer" id="answer9">Answer 9</div>
+        </div>
+
+        <div class="help-box" id="help-box-10" onclick="toggleAnswer(10)">
+            <div class="question">Question 10</div>
+            <div class="answer" id="answer10">Answer 10</div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 VersaNet. All rights reserved.
+    </footer>
+
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById("answer" + id);
+            var box = document.getElementById("help-box-" + id);
+
+            box.classList.toggle("active");
+
+            if (box.classList.contains("active")) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            } else {
+                answer.style.maxHeight = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

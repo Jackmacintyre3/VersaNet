@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +41,8 @@
         </div>
         <div class="top-right-links">
             <a href="results.html" id="resultsLink">Results</a>
-            <a href="#" id="helpLink">Help</a>
+            <a href="scan.html" id="scanLink">Network Scan</a>
+            <a href="help.html" id="helpLink">Help</a>
             <a href="settings.html" id="settingsLink">Settings</a>
         </div>
     </header>
@@ -62,6 +64,13 @@
             </label>
             <p class="toggle-label">Audio Description</p>
         </div>
+        <div class="toggle-container">
+            <label class="toggle-switch">
+                <input type="checkbox" onclick="toggleHelp()" id="helpToggle">
+                <span class="slider round"></span>
+            </label>
+            <p class="toggle-label">Help Text</p>
+        </div>
     </div>
     <footer>
         © 2024 VersaNet. All rights reserved.
@@ -70,16 +79,20 @@
     <script src="datetime.js"></script>
     <script>
         displayDateTime();
-        // Load Audio Description toggle state from cookie on page load
         window.onload = function() {
             var audioDescriptionToggle = document.getElementById("audioDescriptionToggle");
             var audioDescriptionCookie = getCookie("audioDescription");
             if (audioDescriptionCookie !== "") {
                 audioDescriptionToggle.checked = audioDescriptionCookie === "true";
             }
+
+            var helpToggle = document.getElementById("helpToggle");
+            var helpCookie = getCookie("helpEnabled");
+            if (helpCookie !== "") {
+                helpToggle.checked = helpCookie === "true";
+            }
         };
 
-        // Function to get the value of a cookie by name
         function getCookie(name) {
             var value = "; " + document.cookie;
             var parts = value.split("; " + name + "=");
@@ -89,15 +102,24 @@
     </script>
     <script src="textToSpeech.js"></script>
     <script>
-        // Function to toggle Audio Description and set the cookie
         function toggleAudioDescription() {
             var audioDescriptionToggle = document.getElementById("audioDescriptionToggle");
             setAudioDescriptionToggle(audioDescriptionToggle.checked ? "true" : "false");
         }
 
-        // Function to set the audioDescription cookie
+        function toggleHelp() {
+            var helpToggle = document.getElementById("helpToggle");
+            setHelpToggle(helpToggle.checked ? "true" : "false");
+        }
+
         function setAudioDescriptionToggle(value) {
             document.cookie = "audioDescription=" + value + "; path=/";
+        }
+
+        function setHelpToggle(value) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + 365 * 24 * 60 * 60 * 1000); // 1 year expiration
+            document.cookie = "helpEnabled=" + value + ";expires=" + expires.toUTCString() + ";path=/";
         }
     </script>
 </body>

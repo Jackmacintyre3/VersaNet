@@ -8,7 +8,6 @@ function readText(text) {
         if (getAudioDescriptionToggle() === "true" && canRead(text)) {
             addToQueue(text);
 
-            // If the queue was empty, start processing it
             if (speechQueue.length === 1) {
                 processQueue();
             }
@@ -19,7 +18,6 @@ function readText(text) {
 }
 
 function canRead(text) {
-    // Check if enough time has passed since the last read of the same text
     return text !== lastSpokenText || (Date.now() - lastSpokenTime >= 5000);
 }
 
@@ -36,16 +34,17 @@ function processQueue() {
         var utterance = new SpeechSynthesisUtterance(textToRead);
         utterance.onend = function () {
             lastSpokenTime = Date.now();
-            processQueue(); // Continue with the next item in the queue
+            processQueue();
         };
         synth.speak(utterance);
     }
 }
 
-// Attach event listeners to "Help" and "Settings" links
 var helpLink = document.getElementById('helpLink');
 var settingsLink = document.getElementById('settingsLink');
+var resultsLink = document.getElementById('resultsLink');
 var runMonitorButton = document.getElementById('runMonitorButton');
+var scanLink = document.getElementById('scanLink');
 
 if (helpLink) {
     helpLink.addEventListener('mouseover', function (event) {
@@ -59,18 +58,31 @@ if (settingsLink) {
     });
 }
 
+
+if (scanLink) {
+    scanLink.addEventListener('mouseover', function (event) {
+        readText("Network Scan Results");
+    });
+}
+
+
 if (runMonitorButton) {
     runMonitorButton.addEventListener('mouseover', function (event) {
         readText("Run Speed Test");
     });
 }
 
-// Function to get the value of the Audio Description toggle from the cookie
+
+if (resultsLink) {
+    resultsLink.addEventListener('mouseover', function (event) {
+        readText("Results");
+    });
+}
+
 function getAudioDescriptionToggle() {
     return getCookie("audioDescription");
 }
 
-// Function to get the value of a cookie by name
 function getCookie(name) {
     var value = "; " + document.cookie;
     var parts = value.split("; " + name + "=");

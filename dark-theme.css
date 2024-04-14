@@ -151,7 +151,6 @@ footer {
     bottom: 0;
 }
 
-/* Toggle Switch Styles */
 .toggle-container {
     display: flex;
     flex-direction: column;
@@ -225,7 +224,6 @@ input:checked + .slider:before {
     margin-top: 10px;
 }
 
-/* Button Styles */
 #runMonitorButton {
     background-color: #1b4f72;
     color: #ecf0f1;
@@ -242,7 +240,6 @@ input:checked + .slider:before {
     background-color: #154360;
 }
 
-/* Loading Bar Styles */
 #loading {
     display: none;
 }
@@ -265,7 +262,7 @@ input:checked + .slider:before {
 #internet-status {
     display: flex;
     align-items: center;
-    margin-left: 150px;
+    margin-left: 260px;
 }
 
 #internet-status-text {
@@ -281,11 +278,10 @@ input:checked + .slider:before {
     margin-right: 10px;
 }
 
-/* Table Styles */
 table {
     border-collapse: collapse;
-    width: calc(100% - 20px); /* Set the width to 100% minus 20px for a 10px gap on each side */
-    margin: 0 10px; /* Add 10px margin on each side */
+    width: calc(100% - 20px);
+    margin: 0 10px;
     color: #ecf0f1;
     margin-bottom: 20px;
 }
@@ -301,29 +297,26 @@ th {
     background-color: #2c3e50;
 }
 
-/* Chart Container Styles */
 .chart-container {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 120px; /* Vertical spacing between charts */
-    width: 95%; /* Set the width to 95% */
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    margin-bottom: 120px;
+    width: 95%;
+    overflow-x: auto;
 }
 
-/* Chart Styles */
 canvas {
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Chart Axis Label Colors */
 .axis-label,
 text {
-    fill: #ecf0f1; /* Change the chart's axis label color to white */
+    fill: #ecf0f1;
 }
 
-alendar input {
+calendar input {
     background-color: #34495e;
     color: #ecf0f1;
     border: none;
@@ -337,11 +330,11 @@ alendar input {
 #loadDataButton {
     background-color: #1b4f72;
     color: #ecf0f1;
-    padding: 8px 20px; /* Adjusted padding for more space on either side */
+    padding: 8px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px; /* Adjusted font size for buttons */
+    font-size: 14px;
     margin-bottom: 20px;
     transition: background-color 0.3s ease-in-out;
 }
@@ -352,18 +345,17 @@ alendar input {
     background-color: #154360;
 }
 
-/* Calendar Styles */
 #datePicker {
-    background-color: #1b4f72; /* Matching button color */
+    background-color: #1b4f72;
     color: #ecf0f1;
     border: none;
     padding: 8px;
     border-radius: 5px;
-    font-size: 14px; /* Adjusted font size for the date picker */
+    font-size: 14px;
 }
 
 #calendar input {
-    background-color: #1b4f72; /* Matching button color */
+    background-color: #1b4f72;
     color: #ecf0f1;
     border: none;
     padding: 5px;

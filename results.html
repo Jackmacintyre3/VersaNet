@@ -17,6 +17,21 @@
     <script src="run.js"></script>
     <script src="check.js"></script>
     <script src="textToSpeech.js"></script>
+
+    <script>
+        function openGraphInNewPage(chartId) {
+            const svgElement = document.getElementById(chartId);
+            if (!svgElement) {
+                console.error(`SVG element with ID ${chartId} not found.`);
+                return;
+            }
+            const svgString = new XMLSerializer().serializeToString(svgElement);
+            const blob = new Blob([svgString], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const graphUrl = `graph.html?svg=${encodeURIComponent(url)}`;
+            window.location.href = graphUrl;
+        }
+    </script>
 </head>
 
 <body>
@@ -30,7 +45,8 @@
         </div>
         <div class="top-right-links">
             <a href="results.html" id="resultsLink">Results</a>
-            <a href="#" id="helpLink">Help</a>
+            <a href="scan.html" id="scanLink">Network Scan</a>
+            <a href="help.html" id="helpLink">Help</a>
             <a href="settings.html" id="settingsLink">Settings</a>
         </div>
     </header>
@@ -43,6 +59,11 @@
         <button id="loadPreviousDayButton">Load Previous Day</button>
         <button id="loadNextDayButton">Load Next Day</button>
     </div>
+<div class="button-container">
+    <button class="graph-button" onclick="openGraphInNewPage('downloadChart')">View Download Speed Graph</button>
+    <button class="graph-button" onclick="openGraphInNewPage('uploadChart')">View Upload Speed Graph</button>
+    <button class="graph-button" onclick="openGraphInNewPage('pingChart')">View Ping Speed Graph</button>
+</div>
 
     <table id="speedTestTable">
         <thead>
@@ -69,14 +90,15 @@
     <footer>
         &copy; 2024 VersaNet. All rights reserved.
     </footer>
-<script>
-    $(document).ready(function () {
-        $('#datePicker').change(function () {
-            selectedDate = $('#datePicker').val();
-            loadData();
+
+    <script>
+        $(document).ready(function () {
+            $('#datePicker').change(function () {
+                selectedDate = $('#datePicker').val();
+                loadData();
+            });
         });
-    });
-</script>
+    </script>
     <script src="graphs.js"></script>
 </body>
 

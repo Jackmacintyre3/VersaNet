@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VersaNet - Help</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/w87hUit.png">
+    <link id="theme" rel="stylesheet" href="dark-theme.css">
+</head>
+
+<style>
+table {
+margin-bottom: 100px;
+}
+
+</style>
+<header>
+    <div class="logo">
+        <a href="index.html">VersaNet</a>
+    </div>
+    <div id="internet-status" class="status-indicator">
+        <div id="internet-status-text">Internet Connection:</div>
+        <div class="status-circle"></div>
+    </div>
+    <div class="top-right-links">
+            <a href="results.html" id="resultsLink">Results</a>
+            <a href="scan.html" id="scanLink">Network Scan</a>
+            <a href="help.html" id="helpLink">Help</a>
+            <a href="settings.html" id="settingsLink">Settings</a>
+    </div>
+</header>
+<body>
+    <h2>ARP Scan Results</h2>
+    <div id="arp-scan-results"></div>
+<br>
+    <table>
+        <thead>
+            <tr>
+                <th>IP Address</th>
+                <th>MAC Address</th>
+                <th>Hostname</th>
+            </tr>
+        </thead>
+        <tbody id="host-table-body"></tbody>
+    </table>
+
+    <footer>
+        &copy; 2024 VersaNet. All rights reserved.
+    </footer>
+
+    <script src="arp_scan_parses.js"></script>
+    <script src="theme.js"></script>
+    <script src="datetime.js"></script>
+    <script src="run.js"></script>
+    <script src="check.js"></script>
+    <script src="textToSpeech.js"></script>
+</body>
+
+</html>

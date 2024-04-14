@@ -100,27 +100,51 @@ Replace servicename.service with the actual service file names.
 
 ## Troubleshooting and FAQs
 
-Q: What to do if the web interface is not loading?
-A: Ensure Apache is running and files are correctly placed in /var/www/html. Restart Apache if necessary:
-bash
+This section addresses common issues and questions about the setup and use of VersaNet:
 
-``` sudo systemctl restart apache2 ```
+### Web Interface Issues
 
-Q: How can I check if Pi-Hole is blocking ads as expected?
-A: Access the Pi-Hole admin dashboard through your browser by navigating to http://<your-pi-ip>/admin to view the dashboard and stats.
+- **Q: What should I do if the web interface is not loading?**
+  - **A:** Ensure Apache is running and that the files are correctly placed in `/var/www/html`. If necessary, restart Apache:
+    ```bash
+    sudo systemctl restart apache2
+    ```
 
-Q: My network speed seems slow. How can I verify network performance?
-A: Run speedtest-cli to check the current network speed. Check for any significant drops and verify if other services are 
-consuming bandwidth.
+### Pi-Hole Ad Blocking
 
-Q: How to ensure all persistent services are running?
-A: Check the status of each service using:
+- **Q: How can I check if Pi-Hole is effectively blocking ads?**
+  - **A:** Access the Pi-Hole admin dashboard through your browser by navigating to `http://<your-pi-ip>/admin` to view the dashboard and statistics.
 
-``` sudo systemctl status servicename.service ```
-Replace servicename with the name of the service you want to check.
+### Network Performance
 
-Q: Plex Media Server isn't accessible from my network. What should I check?
-A: Verify that Plex is running and not blocked by your firewall. Ensure the network settings in Plex are configured to allow access from your network.
+- **Q: My network speed seems slow. How can I verify network performance?**
+  - **A:** Run `speedtest-cli` to check the current network speed. Look for any significant drops and verify if other services are consuming excessive bandwidth.
 
+### Persistent Services
 
+- **Q: How do I ensure all persistent services are running?**
+  - **A:** Check the status of each service using the following command. Replace `servicename` with the name of the service you want to check:
+    ```bash
+    sudo systemctl status servicename.service
+    ```
 
+### Plex Media Server
+
+- **Q: Why isn't Plex Media Server accessible from my network?**
+  - **A:** Verify that Plex is running and not blocked by your firewall. Ensure the network settings in Plex are configured to allow access from your network.
+
+### Website Usage
+
+- **Q: How do I change the theme of the website?**
+  - **A:** You can change the color theme of the website from the settings menu, which provides options for different visual themes to enhance accessibility.
+
+- **Q: How can I get audio descriptions for page content?**
+  - **A:** Audio descriptions can be enabled from the accessibility options in the settings menu, providing spoken descriptions of on-screen content for visually impaired users.
+
+- **Q: What should I do if I'm having trouble logging into the website?**
+  - **A:** Ensure that your credentials are correct. If you are unable to remember your password, use the 'Forgot Password' link to reset it. Make sure that your browser accepts cookies from the site.
+
+- **Q: How can I update the software from the website?**
+  - **A:** Navigate to the settings section of the web interface where you can check for software updates. Follow the instructions provided to ensure your system is running the latest version.
+
+These FAQs aim to help users troubleshoot common issues and optimize their use of VersaNet. For more detailed guidance or specific concerns, consulting the full documentation or reaching out for support is recommended.

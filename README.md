@@ -1,52 +1,53 @@
-![Home Page Screenshot](home.png)
+# VersaNet - Network Management Solution
 
-# VersaNet
-VersaNet is a device designed to enhance the security, utility, and efficiency of home networks using a Raspberry Pi cluster. This README includes a full installation guide, detailed descriptions of each component, and the tools used in the project.
+VersaNet integrates several key network management tools into a single device using a Raspberry Pi cluster, designed to enhance the security, utility, and efficiency of home networks.
+
+![VersaNet Overview](home.png)
 
 ## Project Introduction
 
-VersaNet integrates several key network management tools into a single device, enabling users of all technical skill levels to manage and optimize their home networks. It aims to improve network storage, security, and connectivity through user-friendly solutions.
+VersaNet simplifies the management of home networks, making advanced network functionalities accessible to users with varying technical skills. This guide provides detailed instructions for setting up VersaNet, including hardware and software requirements, installation steps, and usage of each component.
 
 ## Installation Guide
 
 ### Hardware Requirements
 
-- **Raspberry Pi Models**: Raspberry Pi 3B+ or newer models recommended.
-- **MicroSD Cards**: Minimum 8 GB, class 10 for optimal performance.
-- **Power Supply**: Appropriate power supply for each Raspberry Pi.
-- **Network Cables and Router**: For connecting your Pis to the network.
+- **Raspberry Pis**: Multiple models (3B+, 4 recommended).
+- **MicroSD Cards**: 8 GB or more, class 10.
+- **Power Adapters**: Suitable for each Raspberry Pi.
+- **Network Equipment**: Cables, router or switch as needed.
 
 ### Software Requirements
 
-- **Raspbian OS**: Install the latest version of Raspbian on each Raspberry Pi.
-- **Apache Server**: For hosting the web interface.
-- **Pi-Hole**: Network-wide ad blocking.
-- **OpenMediaVault**: For NAS functionality.
-- **Plex Media Server**: For media management across the network.
-- **Speedtest**: For monitoring network speed.
+- **Raspbian OS**: Latest version.
+- **Apache Server**: To serve the web interface.
+- **Pi-Hole**: For ad-blocking.
+- **OpenMediaVault**: For setting up NAS.
+- **Plex Media Server**: To organize and access media.
+- **Speedtest by Ookla**: For monitoring network speeds.
 
-### Step-by-Step Setup
+### Installation Steps
 
-1. **Raspberry Pi Setup**:
-   - Flash Raspbian OS onto the MicroSD cards using Raspberry Pi Imager.
-   - Insert the MicroSD cards into each Raspberry Pi and connect them to power and network.
-   
+1. **Raspberry Pi Configuration**:
+   - Flash Raspbian using Raspberry Pi Imager.
+   - Setup network and power connections.
+
 2. **Software Installation**:
-   - **Apache Setup**: Install Apache on the master Pi to host your web interface.
+   - **Apache**:
      ```bash
      sudo apt update
      sudo apt install apache2 -y
      ```
-   - **Pi-Hole Installation**: Install Pi-Hole to handle network-wide ad blocking.
+   - **Pi-Hole**:
      ```bash
      curl -sSL https://install.pi-hole.net | bash
      ```
-   - **OpenMediaVault Setup**: Set up NAS functionalities.
+   - **OpenMediaVault**:
      ```bash
      sudo apt install openmediavault -y
      omv-setup
      ```
-   - **Plex Media Server**: For organizing and accessing media content.
+   - **Plex Media Server**:
      ```bash
      curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
      echo deb https://downloads.plex.tv/repo/deb/ public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
@@ -59,35 +60,67 @@ VersaNet integrates several key network management tools into a single device, e
      speedtest-cli
      ```
 
-3. **Configuration and Optimization**:
-   - Configure each tool following the installation prompts.
-   - Optimize the settings for security, storage management, and network performance.
+## Configuration and Optimization
+
+Discuss how to configure each software component post-installation to optimize performance and security.
 
 ## Tool Descriptions
 
-- **Apache**: Serves the web interface for managing VersaNet functionalities.
-- **Pi-Hole**: Blocks unwanted advertisements across the network, enhancing speed and security.
-- **OpenMediaVault**: Manages your digital storage needs, accessible over the network.
-- **Plex**: Organizes and streams your media content across devices.
-- **Speedtest**: Monitors and logs network speed to ensure optimal performance.
+Detail the purpose and functionality of each tool involved in the VersaNet setup.
 
-## File Descriptions
+### Persistent Services
 
-- `index.html`: The homepage for the VersaNet web interface.
-- `setup.sh`: Script for initial setup and configuration of network management tools.
-- `config.py`: Contains configuration parameters for network tools.
+VersaNet utilizes several persistent services to monitor and manage network health and performance continuously:
+
+- **Internet Connection Checker**:
+  - Monitors the internet connection status.
+- **ARP Scan Checker**:
+  - Regularly scans the network to identify all devices connected and their IP addresses.
+- **Speedtest Service**:
+  - Periodically checks the network speed and logs the results for performance monitoring.
+
+These services are essential for maintaining the reliability and security of the network. They are located in the `/etc/systemd/system` directory for persistence and autostart capabilities.
+
+### Installation of Services
+
+1. **Move all files except the 'services' folder to `/var/www/html`**:
+   - Ensures that the web interface operates correctly.
+2. **Move the 'services' folder content to `/etc/systemd/system`**:
+   - Allows services to be managed by systemd and start at boot.
+
+```bash
+sudo mv /path/to/downloaded/VersaNet/services/* /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable servicename.service
+sudo systemctl start servicename.service
+
+```
+Replace servicename.service with the actual service file names.
+
 
 ## Troubleshooting and FAQs
 
-- **Common Issues**:
-  - **Network connectivity**: Ensure all Raspberry Pis are correctly connected to your router.
-  - **Software errors**: Check the logs for each service in `/var/log/`.
-  
-## Further Development
+Q: What to do if the web interface is not loading?
+A: Ensure Apache is running and files are correctly placed in /var/www/html. Restart Apache if necessary:
+bash
 
-- Suggestions for project enhancements include adding IoT device management capabilities.
-- Community contributions are welcome to extend VersaNet's functionalities.
+``` sudo systemctl restart apache2 ```
 
-## Conclusion
+Q: How can I check if Pi-Hole is blocking ads as expected?
+A: Access the Pi-Hole admin dashboard through your browser by navigating to http://<your-pi-ip>/admin to view the dashboard and stats.
 
-VersaNet aims to provide a robust, user-friendly network management solution. By following this guide, users can set up a comprehensive home network management system that enhances their digital security and utility.
+Q: My network speed seems slow. How can I verify network performance?
+A: Run speedtest-cli to check the current network speed. Check for any significant drops and verify if other services are 
+consuming bandwidth.
+
+Q: How to ensure all persistent services are running?
+A: Check the status of each service using:
+
+``` sudo systemctl status servicename.service ```
+Replace servicename with the name of the service you want to check.
+
+Q: Plex Media Server isn't accessible from my network. What should I check?
+A: Verify that Plex is running and not blocked by your firewall. Ensure the network settings in Plex are configured to allow access from your network.
+
+
+

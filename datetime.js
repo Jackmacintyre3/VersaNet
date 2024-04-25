@@ -5,7 +5,7 @@ function displayDateTime() {
             const now = new Date();
             const formattedDateTime = `${formatDayOfWeek(now)}, ${formatMonthDay(now)} ${formatYear(now)} -- ${formatTime(now)}`;
             datetimeElement.innerHTML = formattedDateTime;
-        }, 1000); // Update every 1000 milliseconds (1 second)
+        }, 1000);
     }
 }
 

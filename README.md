@@ -140,11 +140,3 @@ This section addresses common issues and questions about the setup and use of Ve
 
 - **Q: How can I get audio descriptions for page content?**
   - **A:** Audio descriptions can be enabled from the accessibility options in the settings menu, providing spoken descriptions of on-screen content for visually impaired users.
-
-- **Q: What should I do if I'm having trouble logging into the website?**
-  - **A:** Ensure that your credentials are correct. If you are unable to remember your password, use the 'Forgot Password' link to reset it. Make sure that your browser accepts cookies from the site.
-
-- **Q: How can I update the software from the website?**
-  - **A:** Navigate to the settings section of the web interface where you can check for software updates. Follow the instructions provided to ensure your system is running the latest version.
-
-These FAQs aim to help users troubleshoot common issues and optimize their use of VersaNet. For more detailed guidance or specific concerns, consulting the full documentation or reaching out for support is recommended.

@@ -11,23 +11,20 @@ async function runMonitor() {
             if (fileXhr.status === 200) {
                 var content = fileXhr.responseText;
 
-                // Use regular expressions to extract numerical values
                 var pingMatch = content.match(/Ping: (\d+\.\d+)/);
                 var downloadMatch = content.match(/Download: (\d+\.\d+)/);
                 var uploadMatch = content.match(/Upload: (\d+\.\d+)/);
 
-                // Check if matches are found
                 var pingSpeed = pingMatch ? pingMatch[1] + ' ms' : 'N/A';
                 var downloadSpeed = downloadMatch ? downloadMatch[1] + ' Mbps' : 'N/A';
                 var uploadSpeed = uploadMatch ? uploadMatch[1] + ' Mbps' : 'N/A';
 
                 setTimeout(function () {
-                    // Display the formatted content in the 'network-stats' div
                     var outputString = '<pre>Speed Test Results: Ping: ' + pingSpeed + ' | Download Speed: ' + downloadSpeed + ' | Upload Speed: ' + uploadSpeed + '</pre>';
                     document.getElementById('network-stats').innerHTML = outputString;
 
                     document.getElementById('loading').style.display = 'none';
-                }, 10000); // 10-second delay
+                }, 10000);
             } else {
                 console.error('Error:', fileXhr.statusText);
                 document.getElementById('loading').style.display = 'none';

@@ -1,4 +1,3 @@
-
 var lastSpokenText = "";
 var lastSpokenTime = 0;
 var speechQueue = [];

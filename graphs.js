@@ -1,4 +1,3 @@
-
 let selectedDate = new Date().toISOString().split('T')[0];
 
 function filterDataForSelectedDate(data, selectedDate) {
